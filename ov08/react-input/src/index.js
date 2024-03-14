@@ -45,7 +45,7 @@ class StudentList extends Component {
             </li>
           ))}
         </ul>{' '}
-        {/* lager oppsett for å legge til student: */}
+        {/* tenkt opplegg for å legge til student */}
         <ul></ul>
       </div>
     );
@@ -137,15 +137,12 @@ class StudentEdit extends Component {
     studieProgramService.getStudieProgrammer((lol) => {
       this.studieprogrammer = lol;
     });
-  } // jeg skriver rare ord for å skille hva som er hva. Det burde egentlig stått feks "student", ikke "eggeg"
+  } // jeg skriver rare ord noen steder for å skille hva som er hva. Det burde egentlig stått feks "student", ikke "eggeg" eller "lol"
 
   save() {
     studentService.updateStudent(this.student, () => {
       history.push('/students');
     });
-    /*     studieProgramService.updateStudentStudie(this.studieprogram, () => {
-      history.push('/studieprogram');
-    }); */
   }
 
   // slette student:
@@ -206,16 +203,6 @@ class studieProgramInfo extends Component {
     });
   }
 
-  /*   mounted() {
-    studieProgramService.getStudieProgramInfo((eggeg) => {
-      this.studieprogram = eggeg;
-    });
-    studieProgramService.getStudieProgrammer((lol) => {
-      this.studieprogrammer = lol;
-    });
-  } */
-}
-
 createRoot(document.getElementById('root')).render(
   <HashRouter>
     <Menu />
@@ -226,3 +213,4 @@ createRoot(document.getElementById('root')).render(
     <Route exact path="/studieprogram/:studiekode" component={studieProgramInfo} />
   </HashRouter>,
 );
+}
