@@ -95,10 +95,6 @@ class StudentDetails extends Component {
     );
   }
 
-  //     Oppdaterer query: 'SELECT Students.name, Students.email, Students.studiekode, studieprogram.studienavn
-  //      FROM Students
-  //      JOIN studieprogram ON Students.studiekode = studieprogram.studiekode WHERE Students.id=?',
-
   mounted() {
     pool.query(
       'SELECT Students.name, Students.email, Students.studiekode, studieprogram.studienavn FROM Students JOIN studieprogram ON studieprogram.studiekode = Students.studiekode WHERE id=?',
