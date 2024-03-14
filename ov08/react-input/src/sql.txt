@@ -1,0 +1,16 @@
+INSERT INTO Students (name, email) VALUES ("Kåre", "kare@stud.ntnu.no");
+
+CREATE VIEW StudentsView AS
+SELECT 
+    id,
+    name,
+    email,
+    COALESCE(studiekode, 'ikke valgt') AS studiekode
+FROM 
+    Students;
+
+ALTER TABLE Students DROP FOREIGN KEY Students_ibfk_1;
+ALTER TABLE Students 
+ADD CONSTRAINT Students_ibfk_1 
+FOREIGN KEY (studiekode) REFERENCES studieprogram(studiekode) 
+ON DELETE SET NULL;
