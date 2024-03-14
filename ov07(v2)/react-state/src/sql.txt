@@ -1,0 +1,36 @@
+
+CREATE TABLE Students (
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  name TEXT NOT NULL,
+  email TEXT NOT NULL
+);
+INSERT INTO Students (name, email) VALUES ('Kari', 'kari@stud.ntnu.no');
+INSERT INTO Students (name, email) VALUES ('Ola', 'ola@stud.ntnu.no');
+
+CREATE TABLE studieprogram(
+	studiekode VARCHAR(40) PRIMARY KEY, 
+    studienavn VARCHAR(40) NOT NULL
+);
+
+ALTER TABLE studieprogram
+	ADD FOREIGN KEY (name) REFERENCES Students(name)
+;
+
+INSERT INTO studieprogram(studiekode, studienavn) VALUES ('DIGSEC', 'DIGITAL INFRASTRUKTUR OG CYBERSIKKERHET');
+INSERT INTO studieprogram(studiekode, studienavn) VALUES('DIGFOR', 'DIGITAL FORETNINGSNOOB');
+INSERT INTO studieprogram(studiekode, studienavn) VALUES('DATATA', 'DATAINGENIØR');
+
+SELECT * FROM studieprogram; 
+
+INSERT INTO Students(name, email) VALUES (Eli, eli@stud.ntnu.no);
+
+ALTER TABLE Students
+	ADD COLUMN studiekode VARCHAR(40),
+	ADD FOREIGN KEY (studiekode) REFERENCES studieprogram(studiekode)
+;
+
+
+UPDATE Students SET studiekode  = "DATATA" WHERE id = 1; 
+UPDATE Students SET studiekode  = "DIGFOR" WHERE id = 2; 
+UPDATE Students SET studiekode  = "DIGSEC" WHERE id = 3; 
+
